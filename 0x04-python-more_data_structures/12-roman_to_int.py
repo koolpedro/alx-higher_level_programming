@@ -1,10 +1,17 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if not roman_string or not isinstance(roman_string, str):
-        return (0)
-    Rm = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-    rm = roman_string
-    dlist = [Rm[i[0]] if Rm[i[0]] >= Rm[i[1]] else (-1*Rm[i[0]])
-            for i in zip(rm, rm[1:] + rm[-1])]
-    dec = sum(dlist)
-    return (dec)
+    if roman_string is None:
+        return 0
+    if type(roman_string) is not str:
+        return 0
+    romans = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    number = len(roman_string)
+    value_int = romans[roman_string[number-1]]
+    for i in range(number-1, 0, -1):
+        current = romans[roman_string[i]]
+        prev = romans[roman_string[i-1]]
+        if prev >= current:
+            value_int += prev
+        else:
+            value_int -= prev
+    return value_int
