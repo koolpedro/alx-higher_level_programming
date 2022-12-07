@@ -30,3 +30,42 @@ void print_python_list(PyObject *p)
 			print_python_bytes(item);
 	}
 }
+
+/**
+ * print_python_bytes - prints some basic info about Python bytes objects
+ *
+ * @p: Object of python
+ *
+ * Return: No Return
+ */
+void print_python_bytes(PyObject *p)
+{
+	long int i, sizeb;
+	char *str;
+
+	printf("[.] bytes object info\n");
+
+	if (!PyBytes_Check(p))
+	{
+		printf("  [ERROR] Invalid Bytes Object\n");
+		return;
+	}
+
+	sizeb = PyBytes_Size(p);
+	str = PyBytes_AsString(p);
+
+	printf("  size: %ld\n", sizeb);
+	printf("  trying string: %s\n", str);
+
+	if (sizeb < 10)
+		printf("  first %ld bytes:", sizeb + 1);
+	else
+		printf("  first 10 bytes:"), sizeb = 9;
+
+	for (i = 0; i <= sizeb; i++)
+		if (str[i])
+			printf(" %02hhx", str[i]);
+		else
+			printf(" 00");
+	printf("\n");
+}
