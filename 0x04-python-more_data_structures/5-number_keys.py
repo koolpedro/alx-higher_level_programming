@@ -1,4 +1,5 @@
 #!/usr/bin/python3
 def number_keys(a_dictionary):
-     n = len(a_dictionary)
-     return (n)
+    if a_dictionary is not None:
+        return(len(a_dictionary.keys()))
+    return(0)
