@@ -10,13 +10,13 @@ class Square:
      class Square definition
 
      Args:
-        size : size of a side in square
+     size : size of a side in suare
      """
-     def __init__(self, size):
+     def_init_(self, size):
          """
          Initializes square
 
          Attributes:
-            size: size of a side of square
+         size: size of a side of square
          """
-         self.__size = size
+         self._size = size
