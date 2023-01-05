@@ -1,4 +1,9 @@
 #!/usr/bin/python3
-class LockedClass:
-    """ Class without __dict__ and locked attributes """
-    __slots__ = "first_name"
+LockedClass = __import__('101-locked_class').LockedClass
+
+lc = LockedClass()
+lc.first_name = "Peter"
+try:
+    lc.last_name = "Anyakorah"
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
